@@ -22,7 +22,7 @@ class TestProjectOptions(unittest.TestCase):
         pass
 
     def test_000_something(self):
-        pass
+        self.assertTrue(1 == 2)
 
 
 if __name__ == '__main__':
