@@ -2,7 +2,7 @@
 Project Options
 ===============
 
-.. image:: https://img.shields.io/travis/dvreed/project_options.svg
+.. image:: https://img.shields.io/travis/dvreed/project_options.svg?branch=master
         :target: https://travis-ci.org/dvreed/project_options
 
 .. image:: https://img.shields.io/pypi/v/project_options.svg
