@@ -7,12 +7,14 @@
 from __future__ import print_function
 import base64
 import json
+import codecs
 import os
 from getpass import getpass
 import yaml
 from cryptography.hazmat.primitives.serialization import load_pem_public_key
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.asymmetric.padding import PKCS1v15
+
 
 
 try:
@@ -58,7 +60,9 @@ def fetch_public_key(repo):
     Travis API docs: http://docs.travis-ci.com/api/#repository-keys
     """
     keyurl = 'https://api.travis-ci.org/repos/{0}/key'.format(repo)
-    data = json.loads(urlopen(keyurl).read())
+    reader = codecs.getreader('utf-8')
+    response = urlopen(keyurl)
+    data = json.load(reader(response))
     if 'key' not in data:
         errmsg = "Could not find public key for repo: {}.\n".format(repo)
         errmsg += "Have you already added your GitHub repo to Travis?"
@@ -106,6 +110,7 @@ def update_travis_deploy_password(encrypted_password):
 def main(arguments):
     public_key = fetch_public_key(arguments.repo)
     password = arguments.password or getpass('PyPI password: ')
+    password = password.encode()
     update_travis_deploy_password(encrypt(public_key, password))
     print("Wrote encrypted password to .travis.yml -- you're ready to deploy")
 
