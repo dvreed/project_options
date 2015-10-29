@@ -17,7 +17,7 @@ from cryptography.hazmat.primitives.asymmetric.padding import PKCS1v15
 
 try:
     from urllib import urlopen
-except:
+except ImportError:
     from urllib.request import urlopen
 
 
@@ -103,9 +103,9 @@ def update_travis_deploy_password(encrypted_password):
     prepend_line(TRAVIS_CONFIG_FILE, line)
 
 
-def main(args):
-    public_key = fetch_public_key(args.repo)
-    password = args.password or getpass('PyPI password: ')
+def main(arguments):
+    public_key = fetch_public_key(arguments.repo)
+    password = arguments.password or getpass('PyPI password: ')
     update_travis_deploy_password(encrypt(public_key, password))
     print("Wrote encrypted password to .travis.yml -- you're ready to deploy")
 

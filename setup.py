@@ -7,7 +7,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
@@ -25,7 +24,8 @@ test_requirements = [
 setup(
     name='project_options',
     version='0.1.0',
-    description="Set command-line options for your entire project with each module responsible for implementing their respective options",
+    description="Set command-line options for your entire project with each module "
+                "responsible for implementing their respective options",
     long_description=readme + '\n\n' + history,
     author="David Reed",
     author_email='david.byui@gmail.com',

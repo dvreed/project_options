@@ -1,6 +1,6 @@
-===============================
+===============
 Project Options
-===============================
+===============
 
 .. image:: https://img.shields.io/travis/dvreed/project_options.svg
         :target: https://travis-ci.org/dvreed/project_options

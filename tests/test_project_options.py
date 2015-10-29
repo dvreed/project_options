@@ -10,10 +10,10 @@ Tests for `project_options` module.
 
 import unittest
 
-from project_options import project_options
+# from project_options import project_options
 
 
-class TestProject_options(unittest.TestCase):
+class TestProjectOptions(unittest.TestCase):
 
     def setUp(self):
         pass
